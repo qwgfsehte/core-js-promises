@@ -116,14 +116,13 @@ function getFirstPromiseResult(promises) {
  */
 function getAllOrNothing(promises) {
   return new Promise((resolve, reject) => {
-    let array = [];
+    const array = [];
     promises.forEach((item) => {
       item.then((el) => {
         array.push(el);
-        resolve(el);
+        resolve(array);
       });
       item.catch((el) => {
-        array = [];
         reject(el);
       });
     });
